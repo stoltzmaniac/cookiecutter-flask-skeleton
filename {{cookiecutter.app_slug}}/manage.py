@@ -2,13 +2,14 @@
 
 
 import unittest
+import os
 
 import coverage
 
 from flask.cli import FlaskGroup
 
 from project.server import create_app, db
-from project.server.models import User
+from project.server.user.models import User
 import subprocess
 import sys
 
@@ -44,7 +45,7 @@ def drop_db():
 @cli.command()
 def create_admin():
     """Creates the admin user."""
-    db.session.add(User(email="ad@min.com", password="admin", admin=True))
+    db.session.add(User(email="happyad123@happyad.com", password="happyad321", admin=True))
     db.session.commit()
 
 
@@ -56,30 +57,18 @@ def create_data():
 
 @cli.command()
 def test():
-    """Runs the unit tests without test coverage."""
-    tests = unittest.TestLoader().discover("project/tests", pattern="test*.py")
-    result = unittest.TextTestRunner(verbosity=2).run(tests)
-    if result.wasSuccessful():
-        sys.exit(0)
-    else:
-        sys.exit(1)
+    """Runs the pytest without test coverage."""
+    import pytest
+    rv = pytest.main(["project/tests", "--verbose"])
+    exit(rv)
 
 
 @cli.command()
 def cov():
     """Runs the unit tests with coverage."""
-    tests = unittest.TestLoader().discover("project/tests")
-    result = unittest.TextTestRunner(verbosity=2).run(tests)
-    if result.wasSuccessful():
-        COV.stop()
-        COV.save()
-        print("Coverage Summary:")
-        COV.report()
-        COV.html_report()
-        COV.erase()
-        sys.exit(0)
-    else:
-        sys.exit(1)
+    import pytest
+    rv = pytest.main(["project/tests", "--cov"])
+    exit(rv)
 
 
 @cli.command()
