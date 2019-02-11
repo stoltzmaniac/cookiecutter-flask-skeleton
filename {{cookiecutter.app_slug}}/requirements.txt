@@ -10,3 +10,8 @@ Flask-SQLAlchemy==2.3.2
 Flask-Testing==0.7.1
 Flask-WTF==0.14.2
 psycopg2==2.7.4
+
+# testing
+pytest==3.7.4
+WebTest==2.0.30
+factory-boy==2.11.1
