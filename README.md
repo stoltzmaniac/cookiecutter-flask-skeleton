@@ -15,6 +15,9 @@ $ pip install cookiecutter
 Generate the boilerplate:
 
 ```sh
+<stoltzmaniac fork>
+$ cookiecutter https://github.com/realpython/cookiecutter-flask-skeleton.git
+<original>
 $ cookiecutter https://github.com/realpython/cookiecutter-flask-skeleton.git
 ```
 
