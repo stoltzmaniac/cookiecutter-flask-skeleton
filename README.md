@@ -16,7 +16,7 @@ Generate the boilerplate:
 
 ```sh
 <stoltzmaniac fork>
-$ cookiecutter https://github.com/realpython/cookiecutter-flask-skeleton.git
+$ cookiecutter https://github.com/stoltzmaniac/cookiecutter-flask-skeleton.git
 <original>
 $ cookiecutter https://github.com/realpython/cookiecutter-flask-skeleton.git
 ```
